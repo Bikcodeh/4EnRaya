@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1552966897 source:c:\users\developer\pictures\c++\4enraya\ficha.cpp
+	<iostream>
+
+1552967262 source:c:\users\developer\pictures\c++\4enraya\jugador.cpp
+	<iostream>
+	"Ficha.cpp"
+
+1552966897 c:\users\developer\pictures\c++\4enraya\ficha.cpp
+	<iostream>
+
+1552962636 source:c:\users\developer\pictures\c++\4enraya\main.cpp
+	<iostream>
+	"Tablero.cpp"
+
+1552966714 c:\users\developer\pictures\c++\4enraya\tablero.cpp
+	<iostream>
+	<stdlib.h>
+	<windows.h>
+	"Ficha.cpp"
+
+1552966666 source:c:\users\developer\pictures\c++\4enraya\tablero.cpp
+	<iostream>
+	<stdlib.h>
+	<windows.h>
+	"Ficha.cpp"
+
