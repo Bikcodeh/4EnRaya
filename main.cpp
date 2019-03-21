@@ -64,7 +64,7 @@ int main()
     return 0;
 }
 
-//Funcion la cual se encarga de pintar el titulo que aparece encima del tablero
+//Funcion la cual se encarga de pintar  el titulo que aparece encima del tablero
 void pintarTitulo()
 {
 	gotoxy(63, 2);
