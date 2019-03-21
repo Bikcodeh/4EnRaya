@@ -37,7 +37,7 @@ int main()
 {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTitle("CUATRO EN RAYA");
-	/*
+	
 	while(true){
         nombresJugadores();
 
@@ -57,13 +57,14 @@ int main()
             }
         }
 
-	}*/
+	}
 	tab.dibujarTablero();
 	mostrarGanador();
 
     return 0;
 }
 
+//Funcion la cual se encarga de pintar el titulo que aparece encima del tablero
 void pintarTitulo()
 {
 	gotoxy(63, 2);
@@ -72,6 +73,7 @@ void pintarTitulo()
 	cout << endl << endl << endl << endl << endl << endl << endl << endl;
 }
 
+//Funcion que se encarga de pintar en pantalla en posicion X, Y el elemento a imprimir
 void gotoxy(int x, int y)
 {
     HANDLE hCon;
@@ -83,6 +85,8 @@ void gotoxy(int x, int y)
     SetConsoleCursorPosition(hCon, dwPos);
 }
 
+//Funcion para pedir los nombres de los jugadores, luego se llamara a tirarDado 
+//Para determinar cual usuario empezara de primero
 void nombresJugadores()
 {
 	cout << endl << endl;
@@ -97,11 +101,14 @@ void nombresJugadores()
 	j2 = Jugador(nombreJugador, ficha2, "2");
 
 	tirarDado();
+	//Despues de decidir quien empezara de primero, se da el mensaje de bienvenida y empieza el juego
 
 	cout << endl << endl << "Bienvenido al Cuatro en raya, empecemos! " << endl << endl << endl;
 	pausaLimpiar();
 }
 
+//Funcion encargada de pedir la respuesta de la ecuacion para posteriormente
+//Colocar la ficha en el tablero
 void seleccionarColumna()
 {
 	int columna;
@@ -111,6 +118,7 @@ void seleccionarColumna()
 	cout << "Ingrese la respuesta de la ecuacion: ";
 	cin >> columna;
 
+	//Si la respuesta dada, no abarca una columna valida, el usuario perdera el turno y se le indicara el error
 	if(columna > 6 || columna <= 0){
 
 		cout << "Respuesta incorrecta, pierdes el turno" << endl << endl;
@@ -125,11 +133,14 @@ void seleccionarColumna()
 		pintarTitulo();
 
 	}else{
+		//Si la respeusta si esta en el rango, se procede a colocar la ficha en el tablero
         colocarFicha(columna);
 		tab.setColumnaAuxiliar(columna);
 	}
 }
 
+//Funcion que se encarga de colocar la ficha en el tablero y a su vez, se verifica si hay un ganador
+//Y tambien de paso se asigna el turno al jugador siguiente
 void colocarFicha(int co)
 {
 	//Se mira si el que esta lanzando el turno es el jugador 1
@@ -150,12 +161,14 @@ void colocarFicha(int co)
 
 }
 
+//Funcion que se encarga de pausar la pantalla y despues limpia la pantalla
 void pausaLimpiar()
 {
 	system("pause");
 	system("cls");
 }
 
+//Funcion que se encarga de buscar si hay un ganador
 void verificarGanador(){
 
 	//Si gana
@@ -171,6 +184,7 @@ void verificarGanador(){
     }
 }
 
+//Funcion que pinta el cuadro en el cual se muestra en nombre de la persona ganadora
 void mostrarGanador()
 {
 	gotoxy(72, 21);
@@ -214,6 +228,7 @@ void mostrarGanador()
 
 }
 
+//Funcion que pinta el cuadro que dice "Hasta luego" cuando el usuario decide terminar la ejecucion del juego
 void terminar()
 {
 	system("cls");
@@ -252,6 +267,7 @@ void terminar()
 
 }
 
+//Funcion la cual se encarga de preguntar al usuario si desea jugar una partida nueva
 void juegoNuevo()
 {
 	int opcion;
@@ -277,6 +293,7 @@ void juegoNuevo()
 	}
 }
 
+//Funcion la cual contiene los 6 numeros que se pintan, simulando los numeros de un dado
 void pintarDados(int numero)
 {
     switch(numero)
@@ -338,6 +355,8 @@ void pintarDados(int numero)
     }
 }
 
+//Funcion la cual se encarga de hacer el efecto de los numeros del dado cambiando
+//Y a su vez, generara y retornara un numero aleatorio del 1 al 6
 int generarNumeroAleatorio()
 {
     srand(time(NULL));
@@ -358,6 +377,9 @@ int generarNumeroAleatorio()
     return numAleatorio;
 }
 
+//Funcion la cual se encarga de pedirle al usuario que tire el dado
+//Y posteriormete decide que usuario empezara de primero
+//O en caso de empate de numero, se volvera a pedir que tire el dado
 void tirarDado()
 {
 	system("cls");

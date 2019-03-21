@@ -19,7 +19,7 @@ class Tablero
         {
         	this->fila = 6;
         	
-        	//Inicializamos cada posicion con la 0 y en true
+        	//Inicializamos cada posicion con la O y en true
         	//True significa que esta disponible para el usuario colocar la ficha
         	//False significa que ya no esta disponible
         	
@@ -53,6 +53,7 @@ class Tablero
 	        SetConsoleCursorPosition(hCon, dwPos);
 	    }
 
+		//Funcion la cual se encarga de dibujar toooodooo el tablero junto con las ecuaciones 
 	    void dibujarTablero()
 	    {
 	    	
@@ -148,6 +149,9 @@ class Tablero
 	        }
 	    }
 
+		//Funcion la cual se encarga de pintar la ficha en la posicion dada
+		//Si la pudo colocar en el tablero, retornara true
+		//Si no la pudo colocar, retornara false
 	    bool pintarFicha(int columna, Jugador jugador)
 	    {
 			bool agregoFicha = false;
@@ -176,6 +180,10 @@ class Tablero
 			return agregoFicha;
 		}
 
+		//Funcion la cual se encarga de validar si en la posicion que el jugador quiere
+		//Colocar la ficha es valida o no
+		//Si esta disponible para pintar la ficha, retornara true
+		//Si no esta disponible, retornara false
 		bool validarPosicion(int col)
 		{
 			if(this->tableroFichas[this->fila - 1][col - 1].getEstado())
@@ -183,7 +191,10 @@ class Tablero
 			else
 				return false;
 		}
-
+	
+		//Funcion la cual se encarga de validar si el tablero ya esta lleno
+		//En caso de que haya al menos 1 solo espacio disponible, retornara false
+		//Si el tablero ya esta lleno, retornara true
 		bool tableroLleno()
 		{
 			//Si la tabla ya esta llena, retornara true
@@ -203,12 +214,14 @@ class Tablero
 			return estado;
 		}
 
+		//Funcion para pausar y luego limpiar la pantalla
 		void pausaLimpiarPantalla()
 		{
 			system("pause");
 			system("cls");
 		}
 
+		//Funcion la cual se encarga de verificar que haya un ganador
 		bool verificarGanador(){
             //Verificar horizontal
             for(int i=0;i<6;i++){
@@ -255,7 +268,8 @@ class Tablero
 
             return false;
         }
-        
+        	
+        //Funcion la cual se encarga de reiniciar el tablero para volver a empezar a jugar
         void reiniciarTablero()
         {
         	for(int i = 0; i < 6; i++){
