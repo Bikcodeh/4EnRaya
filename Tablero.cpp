@@ -61,7 +61,7 @@ class Tablero
 			int contY = 7;
 			int contX = 32;
 
-	        for(int i = 0; i < 52; i++ ){
+	        for(int i = 0; i < 112; i++ ){
 
 	            gotoxy(i + 33, 5);
 	            cout << "_";
@@ -83,23 +83,29 @@ class Tablero
 	        gotoxy(27, 15);
 	        cout << "X = 5";
 
-	        gotoxy(36, 4);
-	        cout << "1";
+			//1
+	        gotoxy(40, 4);
+	        cout << "X^2-0";
 
-	        gotoxy(45, 4);
-	        cout << "2";
+			//2
+	        gotoxy(57, 4);
+	        cout << "2X^2-3X";
 
-	        gotoxy(54, 4);
-	        cout << "3";
+			//3
+	        gotoxy(77, 4);
+	        cout << "X^2-6";
 
-	        gotoxy(63, 4);
-	        cout << "4";
+			//4
+	        gotoxy(94, 4);
+	        cout << "2X^2-5X-8";
 
-	        gotoxy(72, 4);
-	        cout << "5";
+			//5
+	        gotoxy(114, 4);
+	        cout << "X^2+2X-30";
 
-	        gotoxy(81, 4);
-	        cout << "6";
+			//6
+	        gotoxy(133, 4);
+	        cout << "6X^2-35x";
 
 
 	        for(int i = 0; i < 5; i++)
@@ -112,26 +118,26 @@ class Tablero
 	            	if(this->tableroFichas[i][j].getSimbolo() == " * "){
 	            		
 	            		SetConsoleTextAttribute(hConsole, (FOREGROUND_GREEN | FOREGROUND_GREEN | FOREGROUND_GREEN));
-	            		cout <<" | " <<this->tableroFichas[i][j].getSimbolo() << " | ";
+	            		cout <<" |      " <<this->tableroFichas[i][j].getSimbolo() << "      | ";
 	            		
 					}else if(this->tableroFichas[i][j].getSimbolo() == " - "){
 						
 						SetConsoleTextAttribute(hConsole, (FOREGROUND_BLUE | FOREGROUND_BLUE | FOREGROUND_GREEN));
-						cout <<" | " <<this->tableroFichas[i][j].getSimbolo() << " | ";
+						cout <<" |      " <<this->tableroFichas[i][j].getSimbolo() << "      | ";
 						
 					}else{
 						
 						SetConsoleTextAttribute(hConsole, (FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN));
-						cout <<" | " <<this->tableroFichas[i][j].getSimbolo() << " | ";
+						cout <<" |      " <<this->tableroFichas[i][j].getSimbolo() << "      | ";
 						
 					}
 	            }
 	            contY += 2;
-	            cout << endl << endl;
+	            cout << endl << endl << endl << endl;
 	            SetConsoleTextAttribute(hConsole, (FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN));
 	        }
 
-	        for(int i = 0; i <52; i++ ){
+	        for(int i = 0; i < 112; i++ ){
 
 	            gotoxy(i + 33, 16);
 	            cout << "_";

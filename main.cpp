@@ -104,26 +104,28 @@ void seleccionarColumna()
 {
 	int columna;
 
-	do{
-		cout << "Turno del jugador: " << tab.getJugadorActual().getNombre() << endl;
-		cout << "Ficha del jugador: " << tab.getJugadorActual().getFicha().getSimbolo() << endl << endl;
-		cout << "Ingrese el numero de la columna: ";
-		cin >> columna;
+	cout << "Turno del jugador: " << tab.getJugadorActual().getNombre() << endl;
+	cout << "Ficha del jugador: " << tab.getJugadorActual().getFicha().getSimbolo() << endl << endl;
+	cout << "Ingrese la respuesta de la ecuacion: ";
+	cin >> columna;
 
-		if(columna > 6){
+	if(columna > 6 || columna <= 0){
 
-			cout << "Ingresa un numero de columna valido." << endl;
-			pausaLimpiar();
-			pintarTitulo();
-			tab.dibujarTablero();
+		cout << "Respuesta incorrecta, pierdes el turno" << endl << endl;
+		
+		if(tab.getJugadorActual().getJugadorNum() == j1.getJugadorNum())
+        	tab.setJugadorActual(j2);
+		else
+			tab.setJugadorActual(j1);
+			
+			
+		pausaLimpiar();
+		pintarTitulo();
 
-		}else{
-            break;
-		}
-	}while(true);
-
-	colocarFicha(columna);
-	tab.setColumnaAuxiliar(columna);
+	}else{
+        colocarFicha(columna);
+		tab.setColumnaAuxiliar(columna);
+	}
 }
 
 void colocarFicha(int co)
