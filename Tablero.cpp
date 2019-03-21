@@ -9,7 +9,7 @@ class Tablero
 {
     private:
     	Jugador jugadorActual;
-        Ficha tableroFichas[5][6];
+        Ficha tableroFichas[6][6];
         bool enJuego;
         int fila;
         int columnaAuxiliar;
@@ -17,13 +17,13 @@ class Tablero
     public:
         Tablero()
         {
-        	this->fila = 5;
+        	this->fila = 6;
         	
         	//Inicializamos cada posicion con la 0 y en true
         	//True significa que esta disponible para el usuario colocar la ficha
         	//False significa que ya no esta disponible
         	
-            for(int i = 0; i < 5; i++){
+            for(int i = 0; i < 6; i++){
                 for(int j = 0; j < 6; j++){
                     this->tableroFichas[i][j] = Ficha(" O ", true);
                 }
@@ -82,6 +82,9 @@ class Tablero
 
 	        gotoxy(27, 15);
 	        cout << "X = 5";
+	        
+	        gotoxy(27, 17);
+	        cout << "X = 6";
 
 			//1
 	        gotoxy(40, 4);
@@ -108,7 +111,7 @@ class Tablero
 	        cout << "6X^2-35x";
 
 
-	        for(int i = 0; i < 5; i++)
+	        for(int i = 0; i < 6; i++)
 	        {
 	        	gotoxy(contX, contY);
 	        	SetConsoleTextAttribute(hConsole, (FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN));
@@ -139,7 +142,7 @@ class Tablero
 
 	        for(int i = 0; i < 112; i++ ){
 
-	            gotoxy(i + 33, 16);
+	            gotoxy(i + 33, 18);
 	            cout << "_";
 	            cout << endl << endl;
 	        }
@@ -150,7 +153,7 @@ class Tablero
 			bool agregoFicha = false;
 
 			if(this->columnaAuxiliar != columna){
-				this->fila = 5;
+				this->fila = 6;
 			}
 
 			if(this->tableroFichas[0][columna - 1].getEstado()){
@@ -186,7 +189,7 @@ class Tablero
 			//Si la tabla ya esta llena, retornara true
 			bool estado = true;
 
-			for(int i = 0; i < 5; i++)
+			for(int i = 0; i < 6; i++)
 			{
 				for(int j = 0; j < 6; j++)
 				{
@@ -208,7 +211,7 @@ class Tablero
 
 		bool verificarGanador(){
             //Verificar horizontal
-            for(int i=0;i<5;i++){
+            for(int i=0;i<6;i++){
                 for(int j=0;j<6;j++){
                     string  simboloFichaActual = tableroFichas[i][j].getSimbolo();
 
@@ -222,7 +225,7 @@ class Tablero
                     }
 
 					//Verificar vertical
-					if(!tableroFichas[i][j].getEstado() && i <= 1 &&
+					if(!tableroFichas[i][j].getEstado() && i <= 2 &&
 					   simboloFichaActual==tableroFichas[i+1][j].getSimbolo() &&
                        simboloFichaActual==tableroFichas[i+2][j].getSimbolo() &&
                        simboloFichaActual==tableroFichas[i+3][j].getSimbolo())
@@ -231,7 +234,7 @@ class Tablero
                     }
 
 					//Verificar diagonal ( arriba izquierdo y abajo derecho)
-					if(!tableroFichas[i][j].getEstado() && i <= 1 && j <= 2  &&
+					if(!tableroFichas[i][j].getEstado() && i <= 2 && j <= 2  &&
                        simboloFichaActual==tableroFichas[i+1][j+1].getSimbolo() &&
                        simboloFichaActual==tableroFichas[i+2][j+2].getSimbolo() &&
                        simboloFichaActual==tableroFichas[i+3][j+3].getSimbolo())
@@ -240,7 +243,7 @@ class Tablero
                     }
 
 		            //Verificar diagonal ( arriba derecho y abajo izquierdo )
-					if(!tableroFichas[i][j].getEstado() && i <= 1 && j >= 2  &&
+					if(!tableroFichas[i][j].getEstado() && i <= 2 && j >= 2  &&
                        simboloFichaActual==tableroFichas[i+1][j-1].getSimbolo() &&
                        simboloFichaActual==tableroFichas[i+2][j-2].getSimbolo() &&
                        simboloFichaActual==tableroFichas[i+3][j-3].getSimbolo())
@@ -255,7 +258,7 @@ class Tablero
         
         void reiniciarTablero()
         {
-        	for(int i = 0; i < 5; i++){
+        	for(int i = 0; i < 6; i++){
                 for(int j = 0; j < 6; j++){
                     this->tableroFichas[i][j] = Ficha(" O ", true);
                 }

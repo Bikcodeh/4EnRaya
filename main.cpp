@@ -37,7 +37,7 @@ int main()
 {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTitle("CUATRO EN RAYA");
-	
+	/*
 	while(true){
         nombresJugadores();
 
@@ -57,14 +57,16 @@ int main()
             }
         }
 
-	}
+	}*/
+	tab.dibujarTablero();
+	mostrarGanador();
 
     return 0;
 }
 
 void pintarTitulo()
 {
-	gotoxy(33, 2);
+	gotoxy(63, 2);
 	cout << "----------------- CUATRO EN RAYA -------------------";
 	cout << endl << endl << endl << endl << endl << endl << endl << endl;
 	cout << endl << endl << endl << endl << endl << endl << endl << endl;
@@ -171,38 +173,38 @@ void verificarGanador(){
 
 void mostrarGanador()
 {
-	gotoxy(40, 20);
+	gotoxy(72, 21);
 	cout << "G    A    M    E       O    V    E    R";
 	for(int i = 0; i < 52; i++ )
 	{
-        gotoxy(i + 33, 18);
+        gotoxy(i + 65, 19);
         cout << "_";
         cout << endl << endl;
 	}
 
-	for(int i = 19; i <= 23; i++ )
+	for(int i = 20; i <= 24; i++ )
 	{
 
-	    gotoxy(32, i);
+	    gotoxy(64, i);
 	    cout << "|";
 	    cout << endl << endl;
     }
 
 
-    gotoxy(44, 22);
+    gotoxy(78, 23);
     cout << "FELICIDADES "<< tab.getJugadorActual().getNombre()<<", HAS GANADO";
 
-    for(int i = 19; i <= 23; i++ )
+    for(int i = 20; i <= 24; i++ )
 	{
 
-	    gotoxy(85, i);
+	    gotoxy(117, i);
 	    cout << "|";
 	    cout << endl << endl;
     }
 
 	for(int i = 0; i <52; i++ ){
 
-        gotoxy(i + 33, 23);
+        gotoxy(i + 65, 24);
         cout << "_";
         cout << endl << endl;
     }
@@ -280,9 +282,8 @@ void pintarDados(int numero)
     switch(numero)
     {
         case 1:
-            gotoxy(40, 4);
+            gotoxy(42, 6);
             cout << "X";
-            cout << endl << endl << endl;
         break;
         case 2:
             gotoxy(40, 4);
