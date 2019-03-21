@@ -16,9 +16,11 @@ class Ficha
             this->estado = estado;
         }
 
+		//Setters
         void setEstado(bool x){ this->estado = x; }
         void setSimbolo(string x ) { this->simbolo = x; }
 
+		//Getters
         bool getEstado(){ return this->estado; }
         string getSimbolo() { return this->simbolo; }
 };
