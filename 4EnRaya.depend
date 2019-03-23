@@ -25,3 +25,21 @@
 	<windows.h>
 	"Ficha.cpp"
 
+1553315324 source:c:\users\developer\documents\cuatroenraya\main.cpp
+	<iostream>
+	"Tablero.cpp"
+	<time.h>
+
+1553314379 c:\users\developer\documents\cuatroenraya\tablero.cpp
+	<iostream>
+	<stdlib.h>
+	<windows.h>
+	"Jugador.cpp"
+
+1553314379 c:\users\developer\documents\cuatroenraya\jugador.cpp
+	<iostream>
+	"Ficha.cpp"
+
+1553314379 c:\users\developer\documents\cuatroenraya\ficha.cpp
+	<iostream>
+

@@ -37,7 +37,7 @@ int main()
 {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTitle("CUATRO EN RAYA");
-	
+
 	while(true){
         nombresJugadores();
 
@@ -58,8 +58,6 @@ int main()
         }
 
 	}
-	tab.dibujarTablero();
-	mostrarGanador();
 
     return 0;
 }
@@ -85,7 +83,7 @@ void gotoxy(int x, int y)
     SetConsoleCursorPosition(hCon, dwPos);
 }
 
-//Funcion para pedir los nombres de los jugadores, luego se llamara a tirarDado 
+//Funcion para pedir los nombres de los jugadores, luego se llamara a tirarDado
 //Para determinar cual usuario empezara de primero
 void nombresJugadores()
 {
@@ -113,22 +111,26 @@ void seleccionarColumna()
 {
 	int columna;
 
+    gotoxy(32, 21);
 	cout << "Turno del jugador: " << tab.getJugadorActual().getNombre() << endl;
+	gotoxy(32, 22);
 	cout << "Ficha del jugador: " << tab.getJugadorActual().getFicha().getSimbolo() << endl << endl;
+	gotoxy(32, 23);
 	cout << "Ingrese la respuesta de la ecuacion: ";
+	gotoxy(32, 24);
 	cin >> columna;
 
 	//Si la respuesta dada, no abarca una columna valida, el usuario perdera el turno y se le indicara el error
 	if(columna > 6 || columna <= 0){
 
+        gotoxy(32, 25);
 		cout << "Respuesta incorrecta, pierdes el turno" << endl << endl;
-		
+
 		if(tab.getJugadorActual().getJugadorNum() == j1.getJugadorNum())
         	tab.setJugadorActual(j2);
 		else
 			tab.setJugadorActual(j1);
-			
-			
+
 		pausaLimpiar();
 		pintarTitulo();
 
@@ -385,41 +387,41 @@ void tirarDado()
 	system("cls");
     string opcion;
     int dado1, dado2;
-    
+
     do{
     	cout << endl << endl;
 	    cout << "Jugador " << j1.getNombre() << " ingrese P para tirar el dado." << endl;
 	    cout << "Ingrese: ";
 	    cin >> opcion;
-	
+
 	    if(opcion == "p" || opcion == "P")
 	    {
 	        dado1 = generarNumeroAleatorio();
 	    }
-	
+
 	    cout << "El jugador " << j1.getNombre() << " tiene el numero: " << dado1 << endl << endl;
-	
+
 	    pausaLimpiar();
-	
+
 	    cout << endl << endl;
 	    cout << "Jugador " << j2.getNombre() << " ingrese P para tirar el dado." << endl;
 		cout << "Ingrese: ";
 	    cin >> opcion;
-	
-	
+
+
 	    if(opcion == "p" || opcion == "P")
 	    {
 	        dado2 = generarNumeroAleatorio();
 	    }
 	    cout << "El jugador " << j1.getNombre() << " tiene el numero: " << dado1 << endl << endl;
 	    cout << "El jugador " << j2.getNombre() <<  " tiene el numero: " << dado2 << endl << endl << endl;
-	    
+
 	    if(dado1 > dado2){
 	    	cout << "Empezara el jugador numero 1, " << j1.getNombre() << endl << endl;
 	    	tab.setJugadorActual(j1);
 	    	break;
 		}else if(dado1 == dado2){
-			
+
 			cout << endl << " --- ---- -- DADOS IGUALES -- --- ---" << endl << endl << endl;
 			pausaLimpiar();
 		}else{
@@ -427,9 +429,9 @@ void tirarDado()
 			cout << "Empezara el jugador numero 2, " << j2.getNombre() << endl << endl;
 	    	break;
 		}
-	    	
-	    	
+
+
 	}while(true);
 
-    
+
 }
